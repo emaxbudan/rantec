@@ -5,15 +5,15 @@ const router = Router();
 
 router.get('/', getAllBookings);
 
-router.get('/:Id', getBookingById);
+router.get('/:id', getBookingById);
 
 
 router.post('/', createBooking);
 
-router.put('/:Id', updateBookingById);
+router.put('/:id', updateBookingById);
 
 
-router.delete('/:Id', deleteBookingById);
+router.delete('/:id', deleteBookingById);
 
 export default router;
 

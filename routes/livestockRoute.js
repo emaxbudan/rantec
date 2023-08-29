@@ -5,13 +5,13 @@ const router = Router();
 
 router.get('/', getAllLivestock);
 
-router.get('/:Id', getSingleLivestock);
+router.get('/:id', getSingleLivestock);
 
 
 router.post('/', createLivestock);
 
-router.patch('/:Id', updatedLivestockById);
+router.patch('/:id', updatedLivestockById);
 
-router.delete('/:Id', deleteLivestockById);
+router.delete('/:id', deleteLivestockById);
 
 export default router;

@@ -27,11 +27,14 @@ export const getAllLivestock = async (req, res) => {
 
 // Get a specific livestock by ID
 export const getSingleLivestock = async (req, res) => {
-    const livestockId = req.params.id;
+    const id = req.params.id;
   
     try {
-        const specificLivestock = await Livestock.findById(livestockId);
-        res.status(200).json({sucess: true, message: "done!", data: specificLivestock})
+        const specificLivestock = await Livestock.findById(id);
+        res.status(200).json({
+            sucess: true, 
+            message: "done!", 
+            data: specificLivestock})
     } catch (err) {
         console.log( err);
         res.status(500).send('Failed to get livestock');
@@ -40,12 +43,18 @@ export const getSingleLivestock = async (req, res) => {
 
 // Update a specific livestock by ID
 export const updatedLivestockById = async (req, res) => {
-    const livestockId = req.params.id;
+    const livestockId = (req.params.id);
     const updatedLivestockData = req.body;
   
     try {
-        const updatedLivestock = await Livestock.findByIdAndUpdate(livestockId, updatedLivestockData, { new: true });
-        res.status(200).json({sucess: true, message: "Done", data: updatedLivestock});
+        const updatedLivestock = await Livestock.findByIdAndUpdate(
+            livestockId, 
+            updatedLivestockData, 
+            { new: true });
+        res.status(200).json({
+            sucess: true, 
+            message: "Done", 
+            data: updatedLivestock}).end;
     } catch (err) {
         console.log( err);
         res.status(500).send('Failed to update livestock');

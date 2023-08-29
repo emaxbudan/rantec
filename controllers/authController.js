@@ -1,7 +1,7 @@
 import users from "../models/user.js";
 import bcryptjs from "bcryptjs"
 
-import  {loginValidator} from "../validators/userValidator.js";
+import  {loginValidator, registerValidator} from "../validators/userValidator.js";
 
 // register
 export const register = async (req, res) => {

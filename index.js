@@ -7,6 +7,7 @@ import router from "./routes/userRoute.js";
 import bookingRoute from "./routes/bookingRoute.js";
 import livestockRoute from "./routes/livestockRoute.js";
 import authRoute from "./routes/authRoute.js";
+import vetRoute from "./routes/vetRoute.js"
 
 config();
 const app = express();
@@ -35,6 +36,7 @@ app.use("/userRoute", router);
 app.use("/livestockRoute", livestockRoute);
 app.use("/authRoute", authRoute);
 app.use("/bookingRoute", bookingRoute);
+app.use("/vetRoute", vetRoute);
 
 app.get("/", (_req, res) => {
   res.send("API is responding");

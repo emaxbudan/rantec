@@ -15,23 +15,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-
-    // photo: {
-    //   type: String,
-    // },
-    // location: {
-    //   type: String,
-    // },
-    // date: {
-    //   type: Date,
-    // },
-    // role: {
+     role: {
       type: String,
       enum: ["Admin", "farmer", "doctor"],
     },
-  
-  { timestamps: true }
-)
+//    {timestamps: true }
+})
 
 
 export default mongoose.model("users", userSchema);

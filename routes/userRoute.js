@@ -7,17 +7,17 @@ const router = Router();
 router.get('/', getAllUsers);
 
  //get single user
-router.get('/:Id', getSingleUser);
+router.get('/:id', getSingleUser);
 
 
  //add new user
 router.post('/', addUser);
 
  //update user
-router.put('/:Id', updateUser);
+router.patch('/:id', updateUser);
 
  //delete user
-router.delete('/:Id', deleteUser);
+router.delete('/:id', deleteUser);
 
 export default router;
 

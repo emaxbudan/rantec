@@ -1,6 +1,7 @@
 // controllers/vetSpaceController.js
 
-import VetSpace from '../models/vetSpaceModel.js';
+import VetSpace from '../models/vetSpace.js';
+// import { vetSpaceValidator } from '../validators/vetValidator.js';
 
 // Create a new veterinary doctor's space
 export const createVetSpace = async (req, res) => {
@@ -51,10 +52,10 @@ export const updateVetSpaceById = async (req, res) => {
       updatedVetSpaceData,
       { new: true }
     );
-    if (!updatedVetSpace) {
-      return res.status(404).send('Veterinary doctor\'s space not found');
-    }
-    res.json(updatedVetSpace);
+    res.status(200).json({
+        success: true, 
+        message: "Updated Sucessfully", 
+        data: updatedVetSpace})
   } catch (err) {
     console.log( err);
     res.status(500).send('Failed to update veterinary doctor\'s space');
@@ -66,10 +67,9 @@ export const deleteVetSpaceById = async (req, res) => {
   try {
     const vetSpaceId = req.params.id;
     const deletedVetSpace = await VetSpace.findByIdAndRemove(vetSpaceId);
-    if (!deletedVetSpace) {
-      return res.status(404).send('Veterinary doctor\'s space not found');
-    }
-    res.sendStatus(204);
+    res.status(200).json({
+    success:true , 
+    message: "Deleted!"});
   } catch (err) {
     console.log( err);
     res.status(500).send('Failed to delete veterinary doctor\'s space');

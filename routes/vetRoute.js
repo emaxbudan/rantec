@@ -5,13 +5,13 @@ const router = Router();
 
 router.get('/', getAllVetSpaces);
 
-router.get('/:Id', getVetSpaceById);
+router.get('/:id', getVetSpaceById);
 
 
 router.post('/', createVetSpace);
 
-router.put('/:Id', updateVetSpaceById);
+router.patch('/:id', updateVetSpaceById);
 
-router.delete('/:Id', deleteVetSpaceById);
+router.delete('/:id', deleteVetSpaceById);
 
 export default router;
