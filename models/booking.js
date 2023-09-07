@@ -7,7 +7,7 @@ const bookingSchema = new mongoose.Schema({
      type: String,
       ref: 'Livestock', 
       required: true },
-  vetSpaceId: { 
+  vetId: { 
     type: String, 
     ref: 'VetSpace', 
     required: true },

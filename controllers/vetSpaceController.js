@@ -12,7 +12,7 @@ export const createVetSpace = async (req, res) => {
     res.status(201).json(savedVetSpace);
   } catch (err) {
     console.log( err);
-    res.status(500).send('Failed to save veterinary doctor\'s space');
+    res.status(500).send('Failed to save veterinary doctor');
   }
 };
 
@@ -23,7 +23,7 @@ export const getAllVetSpaces = async (req, res) => {
     res.json(vetSpaces);
   } catch (err) {
     console.log(err);
-    res.status(500).send('Failed to get veterinary doctor\'s spaces');
+    res.status(500).send('Failed to get veterinary doctor');
   }
 };
 
@@ -33,12 +33,12 @@ export const getVetSpaceById = async (req, res) => {
     const vetSpaceId = req.params.id;
     const vetSpace = await VetSpace.findById(vetSpaceId);
     if (!vetSpace) {
-      return res.status(404).send('Veterinary doctor\'s space not found');
+      return res.status(404).send('Veterinary doctor not found');
     }
     res.json(vetSpace);
   } catch (err) {
     console.log( err);
-    res.status(500).send('Failed to get veterinary doctor\'s space');
+    res.status(500).send('Failed to get veterinary doctor');
   }
 };
 
@@ -58,7 +58,7 @@ export const updateVetSpaceById = async (req, res) => {
         data: updatedVetSpace})
   } catch (err) {
     console.log( err);
-    res.status(500).send('Failed to update veterinary doctor\'s space');
+    res.status(500).send('Failed to update veterinary doctor');
   }
 };
 
@@ -72,6 +72,6 @@ export const deleteVetSpaceById = async (req, res) => {
     message: "Deleted!"});
   } catch (err) {
     console.log( err);
-    res.status(500).send('Failed to delete veterinary doctor\'s space');
+    res.status(500).send('Failed to delete veterinary doctor');
   }
 };
