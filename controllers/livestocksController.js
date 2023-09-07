@@ -10,7 +10,7 @@ export const createLivestock = async (req, res) => {
         res.status(201).json(savedLivestock);
     } catch (err) {
         console.log( err);
-        res.status(500).send('Failed to save livestock');
+        res.status(500).send('Failed to add livestock');
     }
 };
 

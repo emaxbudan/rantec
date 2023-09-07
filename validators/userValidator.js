@@ -3,7 +3,7 @@ import  { z } from "zod";
 export const registerValidator = z.object({
     name: z.string().min(6,{message:"username should exceed 6 characters"}),
     email: z.string().email({message: "ensure it is a valid email"}),
-    role: z.enum(["Admin", "Farmer"]),
+    role: z.enum(["Admin", "farmer", "doctor"]),
     password: z.string().min(6).max(24).trim()
 }).required({message:"Fill all the field with the correct details"})
 

@@ -1,11 +1,17 @@
 // controllers/bookingController.js
 
 import Booking from '../models/booking.js';
-// import bookingValidator from '../validators/bookingValidator.js'
+// import  bookingValidator  from '../validators/bookingValidator.js';
 
 // Create a new booking
 export const createBooking = async (req, res) => {
   const bookingData = new Booking(req.body);
+
+  // const validBooking = bookingValidator.safeParse(req.body);
+
+  // if (!validBooking.success){
+  //   return res.status(400).json((validBooking.error)).end();
+  // }
   try {
     const savedBooking = await bookingData.save();
     return res.status(201).json({ 

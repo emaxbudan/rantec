@@ -1,8 +1,8 @@
-import {z} from "zod";
+import { z } from "zod";
 
 export const bookingValidator = z.object({
-    livestockId: z.string.required(),
-    vetSpaceId: z.string.required(),
-    date: z.date.required(),
-    time: z.string.required(),
+    livestockId: z.string(),
+    vetSpaceId: z.string(),
+    date: z.date(),
+    time: z.string(),
   });

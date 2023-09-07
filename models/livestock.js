@@ -1,7 +1,8 @@
 // Define a Mongoose schema
 
 import mongoose from "mongoose";
-import { nanoid } from "nanoid";
+import {nanoid} from "nanoid"
+// const uniqueId = nanoid()
 
 const livestockSchema = new mongoose.Schema({
     name: { 
@@ -16,12 +17,12 @@ const livestockSchema = new mongoose.Schema({
     weight: {
          type: Number, 
          required: true },
-    livestockId:{
-        type: String,
-        required: true,
-        default: () => nanoid(7),
-        index: {unique: true}
-     },
+         uniqueId: {
+            type: String,
+            required: true,
+            default: () => nanoid(),
+            index: { unique: true },
+          },
   });
   
   // Create a Mongoose model

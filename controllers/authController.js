@@ -5,6 +5,11 @@ import  {loginValidator, registerValidator} from "../validators/userValidator.js
 
 // register
 export const register = async (req, res) => {
+    const isValid = registerValidator.safeParse(req.body);
+
+    if(!isValid.success){
+        return res.status(400).json((isValid.error)).end();
+    }
     try{
 
     //Hashing password
@@ -12,13 +17,10 @@ export const register = async (req, res) => {
     const hash = bcryptjs.hashSync(req.body.password, salt)
 
     const newUser = new users({
-        name: req.body.name,
         username: req.body.username,
         email: req.body.email,
-        location: req.body.location,
         date:req.body.date,
         password: hash,
-        photo:req.body.photo,
         role: req.body.role
 
         });
@@ -32,46 +34,33 @@ export const register = async (req, res) => {
 };
 
 // user login
-export const login = async(req, res) => {
+export const login = async (req, res) => {
     const validatedData = loginValidator.safeParse(req.body);
-
-    //console.log(!validatedData)
-    if(validatedData.success){
-    res.status(200).json((validatedData.success)).end()
+  
+    if (!validatedData.success) {
+      // Handle validation errors
+      return res.status(400).json({ success: false, error: validatedData.error }).end();
     }
-
-    if(!validatedData.success){
-         res.status(400).json((validatedData.error)).end()
-    
-    
-
-     try{
-        const email = req.body.email
-
-        const user = await users.findOne({email});
-         
-        //if user dont exist
-        if(!user){
-            res.status(404).json({sucess: false, meesage:"not Authorized"});
-
-        // if user exists 
-
-        }
-        // correct password
-        const checkCorrectPassword = bcryptjs.compare(req.body.password, users.password);
-        res.status(200).json({success:true, message: "You are logged in", data:user});
-
-        //if incorrect password
-        if(!checkCorrectPassword){
-             return res.status(401).json({success: false, message:"Incorrect email or Password"});
-        }
-        
-    }catch(error){
-        console.log
-        res.status(500).json({sucess: false, message:"Failed to Login"})
-     }}
- };
-
-    
-
-     
+  
+    try {
+      const email = req.body.email;
+      const user = await users.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ success: false, message: "User not found" });
+      }
+  
+      const isPasswordCorrect = await bcryptjs.compare(req.body.password, user.password);
+  
+      if (!isPasswordCorrect) {
+        return res.status(401).json({ success: false, message: "Incorrect email or password" });
+      }
+  
+      // If everything is correct, return a success response
+      return res.status(200).json({ success: true, message: "You are logged in", data: user });
+  
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ success: false, message: "Failed to login" });
+    }
+  };
