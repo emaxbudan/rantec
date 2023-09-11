@@ -5,4 +5,4 @@ export const bookingValidator = z.object({
     vetSpaceId: z.string(),
     date: z.date(),
     time: z.string(),
-  });
+});

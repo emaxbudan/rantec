@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["Admin", "farmer", "doctor"],
     },
+    location: {
+      type: String,
+    },
 //    {timestamps: true }
 })
 

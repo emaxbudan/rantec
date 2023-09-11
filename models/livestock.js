@@ -10,12 +10,9 @@ const livestockSchema = new mongoose.Schema({
         required: true },
     specie: {
         type: String,
-        enum: ["large ruminant", "small ruminant"],
-        required: true,
     },
     breed: { 
         type: String, 
-        enum: ["exotic", "local"],
         required: true },
     age: { 
         type: Number, 
@@ -30,7 +27,7 @@ const livestockSchema = new mongoose.Schema({
      livestockId: {
         type: String,
         required: true,
-        default: () => nanoid(7),
+        default: () => nanoid(4),
         index: { unique: true },
      },
   });
